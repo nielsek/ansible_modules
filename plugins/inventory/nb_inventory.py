@@ -1209,10 +1209,25 @@ class InventoryModule(BaseInventoryPlugin, Constructable, Cacheable):
             group = group["name"]
             grouping = "service"
 
+        # Check the alias mapping for aliases to the groupings
+        grouping = self._alias_group_by(grouping)
+
         if self.group_names_raw:
             return group
         else:
             return "_".join([grouping, group])
+
+    def _alias_group_by(self, group_by):
+        mapping = {
+            "cluster_group": "80_cluster_group",
+            "device_roles": "60_device_roles",
+            "platforms": "50_platforms",
+            "sites": "20_sites",
+            "region": "10_region",
+        }
+
+        mapped = mapping.get(group_by)
+        return mapped or group_by
 
     def add_host_to_groups(self, host, hostname):
 
