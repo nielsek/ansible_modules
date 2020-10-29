@@ -589,21 +589,21 @@ class InventoryModule(BaseInventoryPlugin, Constructable, Cacheable):
     def extract_primary_ip(self, host):
         try:
             address = host["primary_ip"]["address"]
-            return str(ip_interface(address).ip)
+            return address
         except Exception:
             return
 
     def extract_primary_ip4(self, host):
         try:
             address = host["primary_ip4"]["address"]
-            return str(ip_interface(address).ip)
+            return address
         except Exception:
             return
 
     def extract_primary_ip6(self, host):
         try:
             address = host["primary_ip6"]["address"]
-            return str(ip_interface(address).ip)
+            return address
         except Exception:
             return
 
