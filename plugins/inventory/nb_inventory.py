@@ -1244,8 +1244,8 @@ class InventoryModule(BaseInventoryPlugin, Constructable, Cacheable):
         for grouping in self.group_by:
 
             # Don't handle regions here - that will happen in main()
-            if grouping == "region":
-                continue
+            #if grouping == "region":
+            #    continue
 
             if grouping not in self.group_extractors:
                 raise AnsibleError(
@@ -1424,8 +1424,8 @@ class InventoryModule(BaseInventoryPlugin, Constructable, Cacheable):
             self.add_host_to_groups(host=host, hostname=hostname)
 
         # Create groups for regions, containing the site groups
-        if "region" in self.group_by:
-            self._add_region_groups()
+        #if "region" in self.group_by:
+        #    self._add_region_groups()
 
     def parse(self, inventory, loader, path, cache=True):
         super(InventoryModule, self).parse(inventory, loader, path)
